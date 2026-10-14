@@ -1,16 +1,40 @@
-# React + Vite
+# ReactJS Todo Assignment
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a Todo List application built with React + Vite for the ReactJS assignment.
 
-Currently, two official plugins are available:
+## Setup
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+npm install
+```
 
-## React Compiler
+## Run locally
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm run dev
+```
 
-## Expanding the ESLint configuration
+## Build
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+npm run build
+```
+
+## Features implemented
+
+- Add new todo items from a controlled input.
+- Show empty-state message: `No todo is available`.
+- Edit pending todos with Confirm/Cancel actions.
+- Mark pending todos as completed using checkbox.
+- Keep completion one-way (completed todos cannot be unchecked or edited).
+- Allow delete only for completed todos.
+- Show completed todos first, then pending todos.
+- Filter todos using All / Completed / Pending.
+- Show filter buttons only when at least one todo exists.
+- Use assignment-aligned action button styling (Edit, Delete, Confirm, Cancel).
+- Show confirmation dialog before deleting a completed todo.
+
+## Branch and demo deliverables
+
+- Branch name: `feature/todo-list`
+- Demo video link: _To be added_
