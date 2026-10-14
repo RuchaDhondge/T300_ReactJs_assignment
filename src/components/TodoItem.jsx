@@ -45,6 +45,7 @@ export default function TodoItem({ todo, onComplete, onDelete, onUpdate }) {
           <input
             type="checkbox"
             checked={todo.isCompleted}
+            disabled={todo.isCompleted}
             onChange={() => onComplete(todo.id)}
             aria-label={`Toggle completion for ${todo.description || 'todo item'}`}
           />
@@ -52,16 +53,20 @@ export default function TodoItem({ todo, onComplete, onDelete, onUpdate }) {
             {todo.description}
           </span>
           <div className="todo-actions">
-            <button type="button" className="btn-edit" onClick={handleEditStart}>
-              Edit
-            </button>
-            <button
-              type="button"
-              className="btn-delete"
-              onClick={() => onDelete(todo.id)}
-            >
-              Delete
-            </button>
+            {!todo.isCompleted && (
+              <button type="button" className="btn-edit" onClick={handleEditStart}>
+                Edit
+              </button>
+            )}
+            {todo.isCompleted && (
+              <button
+                type="button"
+                className="btn-delete"
+                onClick={() => onDelete(todo.id)}
+              >
+                Delete
+              </button>
+            )}
           </div>
         </>
       )}

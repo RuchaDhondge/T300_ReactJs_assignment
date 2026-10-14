@@ -8,7 +8,12 @@ export default function App() {
   const [todos, setTodos] = useState([]);
   const [selectedFilter, setSelectedFilter] = useState('all');
 
-  const filteredTodos = todos.filter((todo) => {
+  const orderedTodos = [
+    ...todos.filter((todo) => todo.isCompleted),
+    ...todos.filter((todo) => !todo.isCompleted),
+  ];
+
+  const filteredTodos = orderedTodos.filter((todo) => {
     if (selectedFilter === 'completed') {
       return todo.isCompleted;
     }
@@ -34,12 +39,22 @@ export default function App() {
   function handleCompleteTodo(todoId) {
     setTodos((currentTodos) =>
       currentTodos.map((todo) =>
-        todo.id === todoId ? { ...todo, isCompleted: !todo.isCompleted } : todo,
+        todo.id === todoId && !todo.isCompleted
+          ? { ...todo, isCompleted: true }
+          : todo,
       ),
     );
   }
 
   function handleDeleteTodo(todoId) {
+    const isConfirmed = window.confirm(
+      'Are you sure you want to delete this completed todo?',
+    );
+
+    if (!isConfirmed) {
+      return;
+    }
+
     setTodos((currentTodos) => currentTodos.filter((todo) => todo.id !== todoId));
   }
 
